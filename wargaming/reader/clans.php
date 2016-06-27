@@ -12,6 +12,11 @@
 class jpWargamingReaderClans extends jpWargamingBase
 {
 	/**
+	 * @var string
+	 */
+	protected $api = 'worldoftanks';
+
+	/**
 	 * Request /wgn/clans/list/<br><br>Method searches through clans and sorts
 	 * them by the following logic:<ul><li>the exact match of clan tag is placed
 	 * first</li><li>the exact match of clan name is placed second</li><li>name

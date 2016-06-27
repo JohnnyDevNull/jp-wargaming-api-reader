@@ -12,6 +12,11 @@
 class jpWargamingReaderWot extends jpWargamingBase
 {
 	/**
+	 * @var string
+	 */
+	protected $api = 'worldoftanks';
+
+	/**
 	 * Request /wot/account/list/<br><br>Method returns partial list of players.
 	 * The list is filtered by initial characters of user name and sorted
 	 * alphabetically.

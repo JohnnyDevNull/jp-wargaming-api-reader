@@ -13,6 +13,11 @@
 abstract class jpWargamingBase
 {
 	/**
+	 * @var string
+	 */
+	protected $api;
+
+	/**
 	 * @var jpWargamingRegion
 	 */
 	protected $region;
@@ -28,7 +33,7 @@ abstract class jpWargamingBase
 	 */
 	public function __construct($appId, $region = 'EU')
 	{
-		$this->region = new jpWargamingRegion($appId, $region);
+		$this->region = new jpWargamingRegion($appId, $region, $this->api);
 		$this->request = new jpWargamingRequest($this->region);
 	}
 
@@ -84,5 +89,13 @@ abstract class jpWargamingBase
 	public function setPrettyPrint($bool)
 	{
 		$this->request->setPrettyPrint($bool);
+	}
+
+	/**
+	 * @param bool $bool
+	 */
+	public function setAssoc($bool)
+	{
+		$this->request->setAssoc($bool);
 	}
 }

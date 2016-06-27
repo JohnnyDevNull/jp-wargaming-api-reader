@@ -42,6 +42,11 @@ class jpWargamingRequest
 	private $prettyPrint = false;
 
 	/**
+	 * @var bool
+	 */
+	private $assoc = false;
+
+	/**
 	 * @param jpWargamingRegion $region
 	 */
 	public function __construct(jpWargamingRegion $region)
@@ -62,10 +67,9 @@ class jpWargamingRequest
 	/**
 	 * @param string $path
 	 * @param mixed[] $query
-	 * @param bool $assoc
 	 * @return mixed
 	 */
-	public function perform($path, array $query, $assoc = false)
+	public function perform($path, array $query)
 	{
 		$prot = 'http';
 
@@ -79,6 +83,8 @@ class jpWargamingRequest
 			'language' => $this->region->getLang(),
 			'application_id' => $this->region->getAppId()
 		]);
+
+		$query = array_filter($query);
 
 		if($this->method === 'GET') {
 			$url .= '?'.http_build_query($query);
@@ -112,7 +118,7 @@ class jpWargamingRequest
 		}
 
 		if($this->getDecode()) {
-			$ret = json_decode($output, $assoc);
+			$ret = json_decode($output, $this->getAssoc());
 		} else {
 			$ret = $output;
 		}
@@ -182,5 +188,21 @@ class jpWargamingRequest
 	public function getPrettyPrint()
 	{
 		return $this->prettyPrint;
+	}
+
+	/**
+	 * @param $bool
+	 */
+	public function setAssoc($bool)
+	{
+		$this->assoc = (bool)$bool;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getAssoc()
+	{
+		return $this->assoc;
 	}
 }

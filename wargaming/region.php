@@ -32,37 +32,39 @@ class jpWargamingRegion
 	private $appId;
 
 	/**
+	 * @param string $appId
 	 * @param string $region
+	 * $param string $game
 	 */
-	public function __construct($appId, $region = 'EU')
+	public function __construct($appId, $region = 'EU', $api = 'worldoftanks')
 	{
 		$this->setAppId($appId);
 
 		switch (strtoupper($region)) {
 			case 'EU':
 				$this->region = 'EU';
-				$this->url = 'api.worldoftanks.eu';
+				$this->url = 'api.'.$api.'.eu';
 				break;
 
 			case 'NA':
 				$this->region = 'NA';
-				$this->url = 'api.worldoftanks.com';
+				$this->url = 'api.'.$api.'.com';
 				break;
 
 			case 'ASIA':
 				$this->region = 'ASIA';
-				$this->url = 'api.worldoftanks.asia';
+				$this->url = 'api.'.$api.'.asia';
 				break;
 
 			case 'KR':
 				$this->region = 'KR';
-				$this->url = 'api.worldoftanks.kr';
+				$this->url = 'api.'.$api.'.kr';
 				break;
 
 			case 'RU':
 			default:
 				$this->region = 'RU';
-				$this->url = 'api.worldoftanks.ru';
+				$this->url = 'api.'.$api.'.ru';
 		}
 	}
 
