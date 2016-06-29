@@ -30,10 +30,11 @@ abstract class jpWargamingBase
 	/**
 	 * @param string $appId
 	 * @param string $region
+	 * @param string $lang
 	 */
-	public function __construct($appId, $region = 'EU')
+	public function __construct($appId, $region = 'EU', $lang = 'en')
 	{
-		$this->region = new jpWargamingRegion($appId, $region, $this->api);
+		$this->region = new jpWargamingRegion($appId, $region, $lang, $this->api);
 		$this->request = new jpWargamingRequest($this->region);
 	}
 
@@ -97,5 +98,13 @@ abstract class jpWargamingBase
 	public function setAssoc($bool)
 	{
 		$this->request->setAssoc($bool);
+	}
+
+	/**
+	 * @return mixed[]
+	 */
+	public function getLastRequest()
+	{
+		return $this->request->getLastRequest();
 	}
 }

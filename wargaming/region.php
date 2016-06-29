@@ -34,11 +34,13 @@ class jpWargamingRegion
 	/**
 	 * @param string $appId
 	 * @param string $region
-	 * $param string $game
+	 * @param string $lang [optional] default: 'en'
+	 * @param string $api [optional] default: 'worldoftanks'
 	 */
-	public function __construct($appId, $region = 'EU', $api = 'worldoftanks')
+	public function __construct($appId, $region = 'EU', $lang = 'en', $api = 'worldoftanks')
 	{
 		$this->setAppId($appId);
+		$this->setLang($lang);
 
 		switch (strtoupper($region)) {
 			case 'EU':
