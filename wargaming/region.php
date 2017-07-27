@@ -31,6 +31,12 @@ class jpWargamingRegion
 	 */
 	private $appId;
 
+    private $supportedLanguages = array(
+		'en', 'ru', 'pl', 'de', 'fr',
+		'es', 'zh-cn', 'zh-tw', 'tr',
+		'cs', 'th', 'vi', 'ko'
+    );
+    
 	/**
 	 * @param string $appId
 	 * @param string $region
@@ -123,6 +129,10 @@ class jpWargamingRegion
 	 */
 	public function setLang($lang = 'ru')
 	{
+        if (!in_array($lang, $supportedLanguages)) {
+			throw new InvalidArgumentException('Unsupported language "'.$lang.'" given.');
+		}
+
 		$this->lang = $lang;
 	}
 
