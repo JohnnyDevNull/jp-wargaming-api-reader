@@ -222,45 +222,6 @@ class jpWargamingReaderWows extends jpWargamingBase
 	}
 
 	/**
-	 * Request /wows/encyclopedia/exterior/<br><br>Method returns information
-	 * about signals & camouflages.
-	 *
-	 * @param string|string[] $fields [optional]
-	 * @param int $exteriorId
-	 * @param string $type
-	 *
-	 * @return mixed
-	 * @see https://eu.wargaming.net/developers/api_reference/wows/encyclopedia/exterior/
-	 */
-	public function getEncyclopediaExterior($fields = '', $exteriorId = 0,
-		$type = ''
-	) {
-		return $this->request->perform('/wows/encyclopedia/exterior/', [
-			'fields' => $this->toListString($fields),
-			'exterior_id' => $exteriorId,
-			'type' => $type,
-		]);
-	}
-
-	/**
-	 * Request /wows/encyclopedia/upgrades/<br><br>Method returns the list of
-	 * available ship upgrades.
-	 *
-	 * @param string|string[] $fields [optional]
-	 * @param int             $upgradeId
-	 *
-	 * @return mixed
-	 * @see https://eu.wargaming.net/developers/api_reference/wows/encyclopedia/upgrades/
-	 */
-	public function getEncyclopediaUpgrades($fields = '', $upgradeId = 0)
-	{
-		return $this->request->perform('/wows/encyclopedia/upgrades/', [
-			'fields' => $this->toListString($fields),
-			'upgrade_id' => $upgradeId,
-		]);
-	}
-
-	/**
 	 * Request /wows/encyclopedia/accountlevels/<br><br>Method returns
 	 * information about Service Record levels.
 	 *
@@ -324,7 +285,7 @@ class jpWargamingReaderWows extends jpWargamingBase
 	 */
 	public function getEncyclopediaCrewranks($fields = '', $nation = '')
 	{
-		return $this->request->perform('/wows/encyclopedia/crewskills/', [
+		return $this->request->perform('/wows/encyclopedia/crewranks/', [
 			'fields' => $this->toListString($fields),
 			'nation' => $nation,
 		]);
@@ -347,6 +308,72 @@ class jpWargamingReaderWows extends jpWargamingBase
 	}
 
 	/**
+	 * Request /wows/encyclopedia/consumables/<br><br>Method returns
+	 * information about consumables: camouflages, flags and upgrades.
+	 *
+	 * @param string|string[] $fields [optional]
+	 * @param string $type
+	 * @param int $consumableId
+	 *
+	 * @return mixed
+	 * @see https://developers.wargaming.net/reference/all/wows/encyclopedia/consumables
+	 */
+	public function getEncyclopediaConsumables($fields = '', $type = '',
+		$consumableId = 0
+	) {
+		return $this->request->perform('/wows/encyclopedia/consumables/', [
+			'fields' => $this->toListString($fields),
+			'type' => $type,
+			'consumable_id' => $consumableId
+		]);
+	}
+
+	/**
+	 * Request /wows/encyclopedia/consumables/<br><br>Method returns
+	 * information about collections.
+	 *
+	 * @param string|string[] $fields [optional]
+	 *
+	 * @return mixed
+	 * @see https://developers.wargaming.net/reference/all/wows/encyclopedia/collections/
+	 */
+	public function getEncyclopediaColletions($fields = '' ) {
+		return $this->request->perform('/wows/encyclopedia/colletions/', [
+			'fields' => $this->toListString($fields)
+		]);
+	}
+
+	/**
+	 * Request /wows/encyclopedia/consumables/<br><br>Method returns
+	 * information about items that are included in the collection.
+	 *
+	 * @param string|string[] $fields [optional]
+	 *
+	 * @return mixed
+	 * @see https://developers.wargaming.net/reference/all/wows/encyclopedia/colletioncards/
+	 */
+	public function getEncyclopediaColletioncards($fields = '' ) {
+		return $this->request->perform('/wows/encyclopedia/colletioncards/', [
+			'fields' => $this->toListString($fields)
+		]);
+	}
+
+	/**
+	 * Request /wows/encyclopedia/consumables/<br><br>Method returns
+	 * the information about maps.
+	 *
+	 * @param string|string[] $fields [optional]
+	 *
+	 * @return mixed
+	 * @see https://developers.wargaming.net/reference/all/wows/encyclopedia/maps/
+	 */
+	public function getEncyclopediaMaps($fields = '' ) {
+		return $this->request->perform('/wows/encyclopedia/maps/', [
+			'fields' => $this->toListString($fields)
+		]);
+	}
+
+	/**
 	 * Request /wows/ships/stats/<br><br>Method returns general statistics for
 	 * each ship of a player. Accounts with hidden game profiles are excluded
 	 * from response. Hidden profiles are listed in the field meta.hidden.
@@ -356,7 +383,7 @@ class jpWargamingReaderWows extends jpWargamingBase
 	 * @param int|int[]       $seasonId
 	 *
 	 * @return mixed
-	 * @see https://eu.wargaming.net/developers/api_reference/wows/encyclopedia/battletypes/
+	 * @see https://developers.wargaming.net/reference/all/wows/ships/stats/
 	 */
 	public function getShipsStats($accountId, $fields = '', $seasonId = 0)
 	{
@@ -518,6 +545,22 @@ class jpWargamingReaderWows extends jpWargamingBase
 		return $this->request->perform('/wows/clans/glossary/', [
 			'fields' => $this->toListString($fields),
 			'extra' => $this->toListString($extra),
+		]);
+	}
+
+	/**
+	 * Request /wows/clans/glossary/<br><br> Method returns the information
+	 * about Clan Battles season.
+	 *
+	 * @param string|string[] $fields [optional]
+	 *
+	 * @return mixed
+	 * @see https://developers.wargaming.net/reference/all/wows/clans/season/
+	 */
+	public function getClanSeason($fields = '')
+	{
+		return $this->request->perform('/wows/clans/season/', [
+			'fields' => $this->toListString($fields)
 		]);
 	}
 }

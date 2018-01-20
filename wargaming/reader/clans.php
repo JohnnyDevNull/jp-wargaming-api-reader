@@ -132,11 +132,11 @@ class jpWargamingReaderClans extends jpWargamingBase
 	 * not defined, the method returns all fields.
 	 *
 	 * @return mixed
-	 * @see https://eu.wargaming.net/developers/api_reference/wgn/clans/membersinfo/
+	 * @see https://eu.wargaming.net/developers/api_reference/wgn/clans/messageboard/
 	 */
 	public function getClansMessageboard($accessToken = '', $fields = '')
 	{
-		return $this->request->perform('/wgn/clans/glossary/', [
+		return $this->request->perform('/wgn/clans/messageboard/', [
 			'access_token' => $accessToken,
 			'fields' => $this->toListString($fields),
 		]);
