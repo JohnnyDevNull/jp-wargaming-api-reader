@@ -129,7 +129,7 @@ class jpWargamingRegion
 	 */
 	public function setLang($lang = 'ru')
 	{
-        if (!in_array($lang, $supportedLanguages)) {
+        if (!in_array($lang, $this->supportedLanguages)) {
 			throw new InvalidArgumentException('Unsupported language "'.$lang.'" given.');
 		}
 

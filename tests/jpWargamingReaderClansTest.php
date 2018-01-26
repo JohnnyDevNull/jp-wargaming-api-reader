@@ -1,5 +1,7 @@
 <?php
-class jpWargamingReaderClansTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class jpWargamingReaderClansTest extends TestCase
 {
 	protected function getReader()
 	{

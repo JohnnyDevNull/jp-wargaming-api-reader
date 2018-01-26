@@ -1,5 +1,7 @@
 <?php
-class jpWargamingReaderWotTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class jpWargamingReaderWotTest extends TestCase
 {
 	protected function getReader()
 	{
